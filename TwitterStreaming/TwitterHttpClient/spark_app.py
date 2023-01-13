@@ -59,6 +59,8 @@ def process_rdd(time, rdd):
         # get the top 10 hashtags from the table using SQL and print them
         hashtag_counts_df = sql_context.sql("select hashtag, hashtag_count, pos, neu, neg from hashtags order by hashtag_count desc limit 10")
         hashtag_counts_df.show()
+        # TODO: Connect with mongodb, find name by levenshtein ( string match name on twitter and name on database ) -> update statistic for student
+        
         # call this method to prepare top 10 hashtags DF and send them
         send_df_to_dashboard(hashtag_counts_df)
     except:
